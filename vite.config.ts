@@ -1,13 +1,21 @@
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
-
-const mobile =
-  process.env.TAURI_PLATFORM === "android" ||
-  process.env.TAURI_PLATFORM === "ios";
+import AutoImport from 'unplugin-auto-import/vite'
+import Components from 'unplugin-vue-components/vite'
+import {AntDesignVueResolver, ElementPlusResolver} from 'unplugin-vue-components/resolvers'
 
 // https://vitejs.dev/config/
-export default defineConfig(async () => ({
-  plugins: [vue()],
+export default defineConfig({
+  plugins: [
+
+    AutoImport({
+      resolvers: [ElementPlusResolver()],
+    }),
+    Components({
+      resolvers: [ElementPlusResolver(),AntDesignVueResolver()],
+    }),
+    vue()
+  ],
 
   // Vite options tailored for Tauri development and only applied in `tauri dev` or `tauri build`
   // prevent vite from obscuring rust errors
@@ -28,4 +36,4 @@ export default defineConfig(async () => ({
     // produce sourcemaps for debug builds
     sourcemap: !!process.env.TAURI_DEBUG,
   },
-}));
+});
