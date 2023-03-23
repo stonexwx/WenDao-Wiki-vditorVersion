@@ -32,7 +32,6 @@
 </template>
 
 <script lang="ts" setup>
-import CherryObjUtil from "../../../util/CherryObjUtil";
 import {invoke} from "@tauri-apps/api";
 import {appWindow, WebviewWindow} from "@tauri-apps/api/window";
 import StorageUtil from "../../../util/StorageUtil";
@@ -47,29 +46,29 @@ import {json} from "stream/consumers";
  */
 const open = async () => {
 
-  if (CherryObjUtil.interface().getValue() === "") {
-    await invoke("open").then(async (res:any) => {
-      CherryObjUtil.interface().setMarkdown(res.text)
-      setStorage(appWindow.label, res.path)
-      await appWindow.setTitle(res.name)
-    })
-  } else {
-    await invoke("choose_file").then(async (res:any) => {
-      StorageUtil.set("filePath", res.path)
-      let uuid = getUUID()
-      const webview = new WebviewWindow(uuid, {
-        url: '/Home',
-        title: res.name
-      })
-      await webview.once('tauri://created', async function () {
-        setStorage(uuid, res.path)
-      })
-      await webview.once('tauri://error', function (e) {
-        // an error occurred during webview window creation
-        ElMessage.error("创建失败：" + e)
-      })
-    })
-  }
+  // if (CherryObjUtil.interface().getValue() === "") {
+  //   await invoke("open").then(async (res:any) => {
+  //     CherryObjUtil.interface().setMarkdown(res.text)
+  //     setStorage(appWindow.label, res.path)
+  //     await appWindow.setTitle(res.name)
+  //   })
+  // } else {
+  //   await invoke("choose_file").then(async (res:any) => {
+  //     StorageUtil.set("filePath", res.path)
+  //     let uuid = getUUID()
+  //     const webview = new WebviewWindow(uuid, {
+  //       url: '/Home',
+  //       title: res.name
+  //     })
+  //     await webview.once('tauri://created', async function () {
+  //       setStorage(uuid, res.path)
+  //     })
+  //     await webview.once('tauri://error', function (e) {
+  //       // an error occurred during webview window creation
+  //       ElMessage.error("创建失败：" + e)
+  //     })
+  //   })
+  // }
 }
 
 /**
@@ -93,23 +92,23 @@ const newWindow = async () => {
  * @returns {Promise<void>}
  */
 const save = async () => {
-  if (StorageUtil.session.get("save",false)==="true") {
-    let map:any = storageUtil.get("windowMap", true)
-    let path = map[appWindow.label]
-    if (path===undefined){
-      await saveAs()
-    }else {
-      await invoke("save",{text:CherryObjUtil.interface().getMarkdown(),path:path})
-          .then((res:any) =>{
-            ElMessage.success(res)
-          })
-          .catch((err:any)=>{
-            ElMessage.error(err)
-            console.log(err)
-          })
-    }
-
-  }
+  // if (StorageUtil.session.get("save",false)==="true") {
+  //   let map:any = storageUtil.get("windowMap", true)
+  //   let path = map[appWindow.label]
+  //   if (path===undefined){
+  //     await saveAs()
+  //   }else {
+  //     await invoke("save",{text:CherryObjUtil.interface().getMarkdown(),path:path})
+  //         .then((res:any) =>{
+  //           ElMessage.success(res)
+  //         })
+  //         .catch((err:any)=>{
+  //           ElMessage.error(err)
+  //           console.log(err)
+  //         })
+  //   }
+  //
+  // }
 }
 
 /**
@@ -117,10 +116,10 @@ const save = async () => {
  */
 const saveAs = async ()=>{
 
-  await invoke("save_as",{text:CherryObjUtil.interface().getMarkdown()})
-      .then((res:any) =>{
-        ElMessage.success(res)
-      })
+  // await invoke("save_as",{text:CherryObjUtil.interface().getMarkdown()})
+  //     .then((res:any) =>{
+  //       ElMessage.success(res)
+  //     })
 }
 
 /**
@@ -130,16 +129,16 @@ const saveAs = async ()=>{
 //html
 const exportHTML = async ()=>{
 
-  await invoke("save_as",{text:CherryObjUtil.interface().getHtml(true)})
-      .then((res:any) =>{
-        ElMessage.success(res)
-      })
+  // await invoke("save_as",{text:CherryObjUtil.interface().getHtml(true)})
+  //     .then((res:any) =>{
+  //       ElMessage.success(res)
+  //     })
 }
 
 //img
 const exportImage = async ()=>{
 
-  CherryObjUtil.interface().export('img')
+  // CherryObjUtil.interface().export('img')
 
 }
 

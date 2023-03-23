@@ -1,11 +1,12 @@
 [package]
 name = "wendao"
-version = "0.0.0"
-description = "A Tauri App"
-authors = ["you"]
-license = ""
+version = "0.1.0"
+description = "问道知识库桌面端"
+authors = ["xwx"]
+license = "MIT License"
 repository = ""
 edition = "2021"
+rust-version="1.68.0"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
@@ -16,7 +17,13 @@ tauri-build = { version = "1.2", features = [] }
 tauri = { version = "1.2", features = ["shell-open"] }
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
-
+rfd = "0.10.0"
+uuid = "1.2.2"
+lazy_static = "*"
+rusqlite = { version = "0.28.0", features = ["bundled"] }
+chrono = "*"
+imara-diff = "*"
+image = "*"
 [features]
 # this feature is used for production builds or when `devPath` points to the filesystem
 # DO NOT REMOVE!!

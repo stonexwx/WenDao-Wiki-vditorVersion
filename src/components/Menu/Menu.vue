@@ -6,6 +6,7 @@
 
 <script lang="ts" setup>
 
+import File from "./childe/File.vue";
 </script>
 
 <style scoped>

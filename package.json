@@ -10,15 +10,25 @@
     "tauri": "tauri"
   },
   "dependencies": {
+    "@tauri-apps/api": "^1.2.0",
+    "ant-design-vue": "^3.2.15",
+    "consola": "^2.15.3",
+    "element-plus": "^2.3.1",
+    "vditor": "^3.9.1",
     "vue": "^3.2.45",
-    "@tauri-apps/api": "^1.2.0"
+    "vue-router": "^4.1.6"
   },
   "devDependencies": {
+    "@tauri-apps/cli": "^1.2.2",
     "@types/node": "^18.7.10",
     "@vitejs/plugin-vue": "^4.0.0",
+    "less": "^4.1.3",
+    "sass": "^1.59.3",
     "typescript": "^4.6.4",
+    "unplugin-auto-import": "^0.15.1",
+    "unplugin-vue-components": "^0.24.1",
     "vite": "^4.0.0",
-    "vue-tsc": "^1.0.11",
-    "@tauri-apps/cli": "^1.2.2"
+    "vite-plugin-style-import": "^2.0.0",
+    "vue-tsc": "^1.0.11"
   }
 }

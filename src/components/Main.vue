@@ -24,7 +24,6 @@
 <script lang="ts" setup>
 import {onMounted, ref} from "vue";
 import {appWindow} from '@tauri-apps/api/window';
-import 'cherry-markdown/dist/cherry-markdown.min.css'
 import Dialog from "./Dialog/Dialog.vue";
 import CherryEditor from "./CherryEditor/CherryEditor.vue";
 import Aside from "./Aside/Aside.vue";
